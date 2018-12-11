@@ -21,8 +21,6 @@ def get_head_img(friends):
 
     for i, uname in enumerate(username):
         # 如果是最后一张图片，就创建一张合成的图片
-        if i == len(username):
-            create_img()
         with open("headImgs/" + str(i) + ".png", "wb") as f:
             img = itchat.get_head_img(uname)
             f.write(img)
@@ -56,7 +54,7 @@ def create_img():
             img = img.resize((width, width), Image.ANTIALIAS)
             # paset 拼接图片, 后面的参数是x轴和y轴的位置
             new_img.paste(img, (x * width, y * width))
-            
+
             # 正常情况下，x轴往右一个格，x大于一行能放的图片数之后，y轴往下移一个格
             x += 1
             if x > num_line:
@@ -73,4 +71,6 @@ if __name__ == '__main__':
     friends = itchat.get_friends()
 
 #    获取微信好友的头像
-    get_head_img(friends)
+#    get_head_img(friends)
+#    合成微信好友屏保图
+    create_img()
